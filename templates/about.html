@@ -1,6 +1,4 @@
-{% extends 'base.html' %} 
-{% block content %}<!--content is the name we have chosen for the block-->
-
+{% extends 'base.html' %} {% block content %}<!--content is the name we have chosen for the block-->
 
 <h2>{{ page_title }}</h2>
 <p>
@@ -19,20 +17,36 @@
 {% for member in company %}
 
 <div class="row featurette">
+  {% if loop.index % 2 != 0 %}
   <div class="col-md-7">
-    <h3>{{ member.name }}</h3>
+    <h3>{{ loop.index }} {{ member.name }}</h3>
     <p>
       {{ member.description }}
     </p>
   </div>
   <div class="col-md-5">
-    <img class="featurette-image img-responsive"
+    <img
+      class="featurette-image img-responsive"
       src="{{ member.image_source }}"
       alt="Thorin Oakenshield"
     />
   </div>
+  {% else %}
+  <div class="col-md-5">
+    <img
+      class="featurette-image img-responsive"
+      src="{{ member.image_source }}"
+      alt="Thorin Oakenshield"
+    />
+  </div>
+  <div class="col-md-7">
+    <h3>{{ loop.index }} {{ member.name }}</h3>
+    <p>
+      {{ member.description }}
+    </p>
+  </div>
+  {% endif %}
 </div>
-<hr class="featurette-divider">
-{% endfor %}
-
-{% endblock %}
+{% if loop.index != 13 %}
+<hr class="featurette-divider" />
+{% endif %} {% endfor %} {% endblock %}
