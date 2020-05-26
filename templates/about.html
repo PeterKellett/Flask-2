@@ -1,5 +1,11 @@
-{% extends 'base.html' %} {% block content %}<!--content is the name we have chosen for the block-->
+{% extends 'base.html' %} 
+{% block content %}<!--content is the name we have chosen for the block-->
 
+
+    {% for number in list_of_numbers %}
+        <p>{{ number }}</p>
+    {% endfor %}
+    
 <h2>{{ page_title }}</h2>
 <p>
   The formation of the group grew out of a meeting Gandalf had with Thorin in
